@@ -4,7 +4,7 @@
 
 /Users/circerose/Desktop/Log-Project/Screenshots/Get All Logs.png
 
-![](Login.png)
+Screenshots/Login.png
 
 /Users/circerose/Desktop/Log-Project/Screenshots/Register.png
 
