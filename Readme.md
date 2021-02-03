@@ -1,10 +1,10 @@
-/Users/circerose/Desktop/Log-Project/Screenshots/Create Log.png
+![] (/Users/circerose/Desktop/Log-Project/Screenshots/Create Log.png)
 
 /Users/circerose/Desktop/Log-Project/Screenshots/Get All logs from User.png
 
 /Users/circerose/Desktop/Log-Project/Screenshots/Get All Logs.png
 
-/Users/circerose/Desktop/Log-Project/Screenshots/Login.png
+![](Login.png)
 
 /Users/circerose/Desktop/Log-Project/Screenshots/Register.png
 
