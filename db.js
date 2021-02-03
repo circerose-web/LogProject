@@ -1,5 +1,10 @@
-const { Sequelize } = require('sequelize');
-const sequelize = new Sequelize('WorkoutLog',  'postgres', 'password', {
+const Sequelize = require('sequelize');
+
+const sequelize = new Sequelize(
+    'WorkoutLog',  
+    'postgres',
+     'password', 
+    {
     host: 'localhost', 
     dialect: 'postgres'
 });
@@ -9,7 +14,7 @@ sequelize.authenticate().then(
         console.log('Connected to WorkoutLog postgres database');
     },
     function(err){
-        console(err);
+        console.log(err);
     }
 );
 module.exports = sequelize;

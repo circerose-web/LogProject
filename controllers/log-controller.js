@@ -16,30 +16,41 @@ router.post("/create", (req, res) => {
     .catch(err => res.status(500).json({error: err}))
 });
 
-router.get("/:id", (req, res) => {
+router.get("/", (req, res) => {
     Log.findAll()
     .then((log) => res.status(200).json({log}))
     .catch(err => res.status(500).json({error: err}))
-});
-router.delete("/:id", function (req, res) {
-    const query = { where: {id: req.params.id, owner_id: req.user.id}};
+})
 
-    Log.destroy(query)
-    .then(() => res.status(200).json({message: "Workout Deleted!"}))
-    .catch((err) => res.status(500).json({error: err}))
+router.get("/:id", validateSession, (req, res) => {
+    let id = req.params.id
+    Log.findAll({
+        where: {id: id }
+    })
+    .then(logs => res.status(200).json(logs))
+    .catch(err => res.status(500).json({error: err}))
 });
-    router.put("/:id", function (req, res) {
-        const updateLog = {
+
+router.put("/:id", function (req, res) {
+    const updateLog = {
         description: req.body.log.description,
         definition: req.body.log.definition,
-        result: req. body.log.result,
-        };
-        const query = {where: {id: req.params.id}};
+        result: req.body.log.result
+    };
+    
+    const query = {where: {id: req.params.id}};
 
-        Log.update(updateLoq, query)
-            .then((log) => res.status(200).json(log))
-            .catch((err) => res.status(500).json({error: err}));
-    });
+    Log.update(updateLog, query)
+        .then((log) => res.status(200).json(log))
+        .catch((err) => res.status(500).json({error: err}));
+});
 
-    module.exports = router;
-        
+router.delete("/:id", function (req, res) {
+    const query = {where: {id: req.params.id, owner_id: req.user.id}};
+
+    Log.destroy(query)
+        .then(() => res.status(200).json({message: "Workout Deleted"}))
+        .catch((err) => res.status(500).json({error: err}));
+});
+
+module.exports = router;
